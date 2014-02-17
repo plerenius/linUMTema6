@@ -1,7 +1,7 @@
 // Test libresistance library
 #include <stdio.h>
 
-#include "../src/resistance.h"
+#include "resistance.h"
 
 int main(void)
 {

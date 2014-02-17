@@ -1,10 +1,11 @@
 CC = gcc -g
 LIBFLAG = -L. -lresistance -Wl,-rpath,.
+INC = -Isrc
 
 all:		testRes
 
 testRes:	test/test.c libresistance.so
-		$(CC) -o testRes test/test.c $(LIBFLAG)
+		$(CC) $(INC) -o testRes test/test.c $(LIBFLAG)
 
 libresistance.so:	src/resistance.c src/resistance.h 
 			$(CC) -c -fPIC src/resistance.c
