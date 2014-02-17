@@ -1,0 +1,52 @@
+/****************************************
+* Libresistance.c
+*
+* Author:Petter Lerenius
+*
+*****************************************/
+float serial_resistors(int count, float *array);
+float parallel_resistors(int count, float *array);
+
+// Calculate total resistance for a number of
+// parallel or serial connected resistors
+float calc_resistance(int count, char conn, float *array)
+{
+  float tot_resistance = -1;
+  switch(conn)
+  {
+    case 'P':
+      tot_resistance = parallel_resistors(count, array);
+      break;
+    case 'S':
+      tot_resistance = serial_resistors(count, array);
+      break;
+    default:
+      return -1;
+      break;
+  }
+  return tot_resistance;
+}
+
+// R1+R2
+float serial_resistors(int count, float *array)
+{
+  int i;
+  float totRes=0;
+  for (i = 0; i < count; i++)
+  {
+    totRes += array[i];
+  }
+  return totRes;
+}
+
+//1/R1+1/R2
+float parallel_resistors(int count, float *array)
+{
+  int i;
+  float totRes=0;
+  for (i = 0; i < count; i++)
+  {
+    totRes += 1.0/array[i];
+  }
+  return 1.0/totRes;
+}
