@@ -1,6 +1,6 @@
 CC = gcc -g
-#LIBFLAG = -L. -lresistance -lpower -lcomponent -Wl,-rpath,lib
-LIBFLAG = -L. -lresistance -Wl,-rpath,lib
+#LIBFLAG = -Llib -lresistance -lpower -lcomponent -Wl,-rpath,lib
+LIBFLAG = -Llib -lresistance -Wl,-rpath,lib
 INC = -Iresistance/src -Ipower/src -Icomponent/src
 
 all:		  electrotest

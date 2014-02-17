@@ -4,6 +4,8 @@
 * Author:Petter Lerenius
 *
 *****************************************/
+#include <stdio.h>
+
 float serial_resistors(int count, float *array);
 float parallel_resistors(int count, float *array);
 
@@ -12,6 +14,12 @@ float parallel_resistors(int count, float *array);
 float calc_resistance(int count, char conn, float *array)
 {
   float tot_resistance = -1;
+  if (array == 0)
+  {
+    printf("array is NULL!");
+    return -1;
+  }
+
   switch(conn)
   {
     case 'P':
@@ -46,6 +54,7 @@ float parallel_resistors(int count, float *array)
   float totRes=0;
   for (i = 0; i < count; i++)
   {
+    if (array[i] == 0) { return 0; }
     totRes += 1.0/array[i];
   }
   return 1.0/totRes;
